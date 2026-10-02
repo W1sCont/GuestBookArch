@@ -1,0 +1,58 @@
+﻿@model Guestbook.Models.LogIn
+
+@{
+    ViewData["Title"] = "Авторизація";
+}
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-5">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-primary text-white text-center py-3 rounded-top-4">
+                    <h4 class="mb-0 fw-bold">
+                        <i class="bi bi-box-arrow-in-right me-2"></i>Вхід в систему
+                    </h4>
+                </div>
+
+                <div class="card-body p-4">
+                    <form asp-action="LogIn" method="post">
+                        <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="Login" class="form-label fw-bold text-dark">Логин</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light text-secondary"><i class="bi bi-person"></i></span>
+                                <input asp-for="Login" class="form-control" placeholder="Введіть логін" />
+                            </div>
+                            <span asp-validation-for="Login" class="text-danger small mt-1 d-block"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="Password" class="form-label fw-bold text-dark">Пароль</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light text-secondary"><i class="bi bi-lock"></i></span>
+                                <input asp-for="Password" type="password" class="form-control" placeholder="Введіть пароль" />
+                            </div>
+                            <span asp-validation-for="Password" class="text-danger small mt-1 d-block"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center pt-2">
+                            <a asp-action="Index" class="btn btn-outline-secondary px-4 rounded-pill">
+                                Вернуться
+                            </a>
+                            <button type="submit" class="btn btn-primary px-4 rounded-pill fw-semibold shadow-sm">
+                                Вхід
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
